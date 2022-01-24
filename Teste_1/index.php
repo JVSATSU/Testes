@@ -20,10 +20,7 @@
 	function ordena($numeros){
         $nulo = null;
         for($i = 0; $i < count($numeros); $i++){  
-        
-          
-            
-                
+     
             
         
             if($i < count($numeros) - 1)
