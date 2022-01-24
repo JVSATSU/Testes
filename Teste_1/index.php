@@ -14,24 +14,42 @@
 </head>
 <body>
 <?php
-    $numeros = array(6,9,1,2,8,7,4,10,3,5,"A","B","1");
-  
-    natsort($numeros);
-    foreach ($numeros as $num) {
-    
-        if (filter_var($num, FILTER_VALIDATE_INT)) {
-            echo $num," ";
-        } else {
-            echo "X "; //se quiser que eu faça algo mais sofisticado do que só um "X", é só dizer
-        }
-
-
-         //var_dump(is_int($num)); <-Tentei utilizar esse metodo primeiro, deu "end of file",
-         //au recorri ao filter_var msm.
+    $array = array(6,9,1,2,8,"A",7,4,10,3,5,12,2.15,"E","C",75);
+	ordena($array);
+	
+	function ordena($numeros){
+        $nulo = null;
+        for($i = 0; $i < count($numeros); $i++){  
         
-    
+            if (filter_var($numeros[$i], FILTER_VALIDATE_INT)) {
+                
+            } else {
+                $numeros[$i] = NULL;
+            }
+        
+            if($i < count($numeros) - 1)
+                $prox = $i + 1;
+            
+            
+                for($ant = 0; $ant < count($numeros); $ant++){
+                if($numeros[$ant] > $numeros[$prox]){
+                    $nulo = $numeros[$ant];
+                    $numeros[$ant] = $numeros[$prox];
+                    $numeros[$prox] = $nulo;
+                }
+            }
+        }
+        
+        for($i = 0; $i < count($numeros); $i++){
+            
+            
+            echo $numeros[$i], ' ';
+        }
     }
-  
+
+    
+    
+    
     
 ?>
 </body>
