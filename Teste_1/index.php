@@ -14,18 +14,17 @@
 </head>
 <body>
 <?php
-    $array = array(6,9,1,2,8,"A",7,4,10,3,5,12,2.15,"E","C",75);
+    $array = array(6,9,1,2,8,"A",7,4,10,3,5,12,"E","C",75,99,"ABCDEFG",1.5,100);
 	ordena($array);
 	
 	function ordena($numeros){
         $nulo = null;
         for($i = 0; $i < count($numeros); $i++){  
         
-            if (filter_var($numeros[$i], FILTER_VALIDATE_INT)) {
+           // if (filter_var($numeros[$i], FILTER_VALIDATE_INT)) { 
+            
                 
-            } else {
-                $numeros[$i] = NULL;
-            }
+            
         
             if($i < count($numeros) - 1)
                 $prox = $i + 1;
@@ -38,11 +37,17 @@
                     $numeros[$prox] = $nulo;
                 }
             }
+            if(!is_int($numeros[$i])){
+                $numeros[$i] = NULL;
+            } 
         }
+
         
         for($i = 0; $i < count($numeros); $i++){
             
-            
+            if(!is_int($numeros[$i])){
+                $numeros[$i] = NULL;
+            } 
             echo $numeros[$i], ' ';
         }
     }
