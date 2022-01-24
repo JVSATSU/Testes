@@ -21,7 +21,7 @@
         $nulo = null;
         for($i = 0; $i < count($numeros); $i++){  
         
-           // if (filter_var($numeros[$i], FILTER_VALIDATE_INT)) { 
+          
             
                 
             
