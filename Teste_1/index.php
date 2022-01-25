@@ -29,11 +29,11 @@
         for ((int) $i = 0; $i < count($num_array); (int) $i++) // este loop é para verificar se "elemento" do array é do tipo Integer
         {
 
-            if (is_int($num_array[$i])) 
+            if (is_int($num_array[$i])) // caso o indice contenha um numero inteiro ele pode ser exibido
             {
                 echo var_dump($num_array[$i]) . ' ';
             } else {
-                $num_array[$i] = NULL;
+                $num_array[$i] = NULL;// caso seja qualquer outro tipo ele tem valor nulo no array.
             }
         }
     }
