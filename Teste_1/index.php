@@ -1,65 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=§, initial-scale=1.0">
-    <style>
-        body {
-            background-color: grey;
-            text-align: center;
-        }
-    </style>
-    <title>Teste 1</title>
-</head>
 
-<body>
-    <?php    
-    
-    
-    $array  = array(6, 9, 1, 2, 8, "A", 7, 4, 10, 3, 5, 12, "E", "C", 75, 99, "ABCDEFG", 1.5, 100,111);
-    ordenaNumeros($array);
-    
-    function ordenaNumeros (array $num_array)
+    $array  = array(6, 9, 1, 2, 8, "A", 7, 4, 10, 3, 5, 12, "E", "C", 75, 99, "ABCDEFG", 1.5, 100, 111, 149, 1414);
+
+    function ordenaNumeros(array $num_array): void
     {
-        $nulo = NULL;
-        for ($i = 0; $i < count($num_array); $i++) 
+        for ($i = 0; $i < count((array)$num_array); $i++) 
         {
 
 
-
-            if ($i < count($num_array) - 1) 
+            if ($i < count((array)$num_array) - 1) //compara o numero atual e anterior até o ultimo indice do array
             {
-                $prox = $i + 1;
-
-
-                for ($ant = 0; $ant < count($num_array); $ant++) 
-                {
-                    if ($num_array[$ant] > $num_array[$prox]) 
+                $proximo = $i + 1; //proximo = indice atual + 1
+                $troca = NULL; //esta variavel é utilizada para fazer a mundança dos indices do array (aceito sugestões).
+                for ((int)$atual = 0; (int)$atual < count((array)$num_array); (int)$atual++)// enquanto o indice atual for menor que o tamanho do array,
+                {                                                                           // irá ser verificado se o indice atual é maior que o proximo indice.
+                    if ($num_array[$atual] > $num_array[$proximo]) 
                     {
-                        $nulo = $num_array[$ant];
-                        $num_array[$ant] = $num_array[$prox];
-                        $num_array[$prox] = $nulo;
-                    }
-                }
+                        $troca = $num_array[$atual];                 //variavel troca recebe o indice atual             -------> 2(troca) -----
+                        $num_array[$atual] = $num_array[$proximo];   //o indice atual se torna o proximo                |                      |
+                        $num_array[$proximo] = $troca;               //e o proximo agora é o indice atual           2(atual)              1(proxima)
+                    }                                                //                                                 |                       |
+                }                                                   //                                                  ----------- 1 <---------
             }
         }
 
 
-        for ($i = 0; $i < count($num_array); $i++) 
+        for ((int) $i = 0; $i < count($num_array); (int) $i++) // este loop é para verificar se "elemento" do array é do tipo Integer
         {
 
-            if (!is_int($num_array[$i])) 
+            if (is_int($num_array[$i])) 
             {
+                echo var_dump($num_array[$i]) . ' ';
+            } else {
                 $num_array[$i] = NULL;
             }
-
-            echo $num_array[$i], ' ';
         }
     }
 
-    ?>
-</body>
-
-</html>
+    return ordenaNumeros($array);
+?>
